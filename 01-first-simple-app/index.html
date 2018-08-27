@@ -12,6 +12,8 @@
 	  <p>{{ sayHello() }}</p>
 	  <p>{{ sayHelloWithTitle() }}</p>
 	  <p><a v-bind:href="link">Google</a></p>
+		<p>{{ finishedLink }}</p>
+		<p v-html="finishedLink"></p>
 
 	  <!-- abbr -->
 	  <p><a :href="link">Google</a></p>
@@ -22,7 +24,8 @@
 			el: "#app",
 		  data: {
 		  	title: "Hello world",
-		  	link: 'http://google.com'
+		  	link: 'http://google.com',
+		  	finishedLink: '<a href="http://google.com">Google</a>'
 		  },
 
 		  methods: {
