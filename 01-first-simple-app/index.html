@@ -10,19 +10,20 @@
 	  <p>{{ title }}</p>
 	  <p>{{ sayHello() }}</p>
 	  <p>{{ sayHelloWithTitle() }}</p>
+	  <p><a v-bind:href="link">Google</a></p>
 	</div>
 
 	<script>
 		new Vue({
 			el: "#app",
 		  data: {
-		  	title: "Hello world"
+		  	title: "Hello world",
+		  	link: 'http://google.com'
 		  },
 
 		  methods: {
 		  	changeTitle: function(event) {
 		    	this.title = event.target.value;
-		    	link: 'http://google.com'
 		    },
 
 		    // add function
