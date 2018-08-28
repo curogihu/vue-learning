@@ -15,6 +15,9 @@
 -->
 			- <span v-on:mousemove.stop="dummy">DEAD SPOT</span>
 		</p>
+
+		<!-- display alert when typing space -->
+		<input type="text" v-on:keyup.enter.space="alertMe" name="">
 	</div>
 
 
@@ -33,12 +36,15 @@
 				updateCoordinates: function(e) {
 					this.x = e.clientX;
 					this.y = e.clientY;
-				}
+				},
 /*				,
 				dummy: function (e) {
 					e.stopPropagation();
 				}
 */
+				alertMe: function() {
+					alert("alert");
+				}
 			}
 		});
 	</script>
