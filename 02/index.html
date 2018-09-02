@@ -50,6 +50,15 @@
 					return this.counter > 5 ? 'greater 5' : 'smaller than 5';
 				}
 			},
+			watch: {
+				counter: function(v) {
+					var vm = this;
+
+					setTimeout(function() {
+						vm.counter = 0;
+					},2000);
+				}
+			},
 			methods: {
 				result() {
 					console.log('method');
