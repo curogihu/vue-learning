@@ -6,16 +6,27 @@
 </head>
 <body>
 	<div id="app">
-		<button v-on:click="increase(2, $e)">click me</button>
+		<!-- <button v-on:click="increase(2, $e)">click me</button> -->
 		<button v-on:click="counter++">click me</button>
+
+<!--
+		<button v-on:click="increase">increase</button>
+		<button v-on:click="decrease">decrease</button>
+-->
+		<button v-on:click="counter++">increase</button>
+		<button v-on:click="counter--">decrease</button>
+		<button v-on:click="secondCounter++">increase second</button>
+
 		<p>{{ counter * 2 > 10 ? 'grater than 10' : 'smaller than 10' }}</p>
-		<p>{{ counter }}</p>
+		<p>Counter: {{ counter }}</p>
+		<p>Result: {{ result() }} | {{ output }}</p>
 		<p v-on:mousemove="updateCoordinates">
 			coordinates: {{ x }} / {{ y }}
 <!--
 			- <span v-on:mousemove="dummy">DEAD SPOT</span>
 -->
-			- <span v-on:mousemove.stop="dummy">DEAD SPOT</span>
+
+			<!-- - <span v-on:mousemove.stop="dummy">DEAD SPOT</span> -->
 		</p>
 
 		<!-- display alert when typing space -->
@@ -28,13 +39,39 @@
 			el: "#app",
 			data: {
 				counter: 0,
+				secondCounter: 0,
+				// result: '',
 				x: 0,
 				y: 0
 			},
+			computed: {
+				output: function() {
+					console.log('computed');
+					return this.counter > 5 ? 'greater 5' : 'smaller than 5';
+				}
+			},
 			methods: {
+				result() {
+					console.log('method');
+					return this.counter > 5 ? 'greater 5' : 'smaller than 5';
+				},
+/*
 				increase: function(step, e) {
 					this.counter += step;
 				},
+*/
+
+/*
+				increase: function() {
+					this.counter++;
+					this.result = this.counter > 5 ? 'Greater 5' : 'Smaller 5';
+				},
+
+				decrease: function() {
+					this.counter--;
+					this.result = this.counter > 5 ? 'Greater 5' : 'Smaller 5';
+				},
+*/
 				updateCoordinates: function(e) {
 					this.x = e.clientX;
 					this.y = e.clientY;
