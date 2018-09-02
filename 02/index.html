@@ -7,6 +7,8 @@
 <body>
 	<div id="app">
 		<button v-on:click="increase(2, $e)">click me</button>
+		<button v-on:click="counter++">click me</button>
+		<p>{{ counter * 2 > 10 ? 'grater than 10' : 'smaller than 10' }}</p>
 		<p>{{ counter }}</p>
 		<p v-on:mousemove="updateCoordinates">
 			coordinates: {{ x }} / {{ y }}
