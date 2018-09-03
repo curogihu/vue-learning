@@ -3,7 +3,8 @@ new Vue({
 	data: {
 		playerHealth: 100,
 		monsterHealth: 100,
-		gameIsRunning: false
+		gameIsRunning: false,
+		turns: []
 	},
 
 	methods: {
@@ -14,7 +15,12 @@ new Vue({
 		},
 
 		attack: function() {
-			this.monsterHealth -= this.getRandomDamage(3, 10);
+			var damage = this.getRandomDamage(3, 10);
+			this.monsterHealth -= damage;
+			this.turns.unshift({
+				isPlayer: true,
+				text: 'Player hits Monster for ' + damage;
+			});
 
 			if(this.checkWin()) {
 				return;
@@ -63,8 +69,15 @@ new Vue({
 		},
 
 		monsterAttacks: function() {
-			this.playerHealth -= this.getRandomDamage(5, 12);
+			var damage = this.getRandomDamage(5, 12);
+
+			this.playerHealth -= damage;
 			this.checkWin();
+
+			this.turns.unshift({
+				isPlayer: false,
+				text: 'Player hits Monster for ' + damage;
+			});
 		},
 
 		heal: function() {
