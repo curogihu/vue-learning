@@ -25,6 +25,10 @@ var vm1 = new Vue({
   }
 });
 
+setTimeout(function() {
+  vm1.title = 'change by timer';
+}, 3000);
+
 var vm2 = new Vue({
   el: '#app2',
   data: {
