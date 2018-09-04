@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<my-cmp></my-cmp>
+		<my-cmp></my-cmp>
+	</div>
+	<hr>
+
+	<script>
+		Vue.component("my-cmp", {
+			data: function() {
+				return {
+					status: "critical"
+				}
+			},
+			template: "<p>server status: {{ status }}</p>"
+		});
+
+		new Vue({
+			el: "#app"
+		});
+	</script>
+</body>
+</html>
